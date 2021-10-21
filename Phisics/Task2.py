@@ -10,35 +10,32 @@ cos_al = math.cos(math.pi * alpha/180)
 sin_al = math.cos(math.pi * alpha/180)
 
 # Этап 1
-vA = OmegaOA * OA
-AP = AB * cos_al
-OmegaAB = vA / AP
-BP = AB * sin_al
-CP = math.sqrt(AC**2 + AP**2 - 2 * AC * AP * cos_al)
-vB = OmegaAB * AB
-vC = OmegaAB * CP
-print('vA =', vA)
-print('wAB =', OmegaAB)
-print('vB =', vB)
-print('vC =', vC)
+
+Va = OmegaOA * OA  # Нахожу ввекторскорости Va по стандартной формуле
+AP = AB/cos_al  # Нахожу длину AP по ыормуле a = c x cos(b)
+
+OmegaAB = Va/AP
+BP = math.sqrt(AP**2 - AB**2)
+Vb = OmegaAB * BP
+CP = math.sqrt(BP**2 + (AB - AC)**2)
+Vc = CP * OmegaAB
+
+print("wAB =", round(OmegaAB, 5))
+print("Vb =", round(Vb, 5))
+print("Vc =", round(Vc, 5))
 
 # Этап 2
-wAO_bp = EpsilOA * OA
-wAO_c = OmegaOA**2 * OA
-wA = math.sqrt(wAO_bp ** 2 + wAO_c)
-print('wA =', wA)
 
-wBA_c = OmegaAB**2 * AB
-wB = (wAO_bp * sin_al - wAO_c * cos_al - wBA_c) / cos_al
-eAB = (wB * sin_al + wAO_bp * cos_al + wAO_c * sin_al) / AB
-print('wB =', wB)
-print('eAB =', eAB)
+wA = EpsilOA * OA + OmegaOA**2 * OA
+wB = (wA * cos_al + OmegaAB**2 * AB) / sin_al
+eAB = (wB * cos_al + wA * sin_al) / AB
+wCx = AC * OmegaAB**2 + wA * cos_al
+wCy = eAB * AC - wA * sin_al
+wC = math.sqrt(wCx**2 + wCy**2)
+wACc = AC * OmegaAB**2
+wACr = eAB * AC
 
-BC = AB - AC
-wB = -wB
-wCB_c = OmegaAB ** 2 * BC
-wCB_bp = eAB * BC
-wCx = wCB_bp + wB * sin_al
-wCy = wCB_c - wB * cos_al
-wC = math.sqrt(wCx ** 2 + wCy ** 2)
-print('wC =', wC)
+print("wA =", round(wA, 5))
+print("wB =", round(wB, 5))
+print("wC =", round(wC, 5))
+print("eAB =", round(eAB, 5))

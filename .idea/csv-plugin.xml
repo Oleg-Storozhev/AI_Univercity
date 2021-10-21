@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/AI/Lesson 3/OnlineNewsPopularityReduced.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/MO/task1-2.csv">
           <value>
             <Attribute>
