@@ -25,9 +25,14 @@ print("Vb =", round(Vb, 5))
 print("Vc =", round(Vc, 5))
 
 # Этап 2
+wA_ob = EpsilOA * OA
+wA_centr = OmegaOA**2 * OA
+wA = math.sqrt(wA_ob**2 + wA_centr**2)
 
-wA = EpsilOA * OA + OmegaOA**2 * OA
-wB = (wA * cos_al + OmegaAB**2 * AB) / sin_al
+wAB_centr = OmegaAB**2 * AB
+
+wB = (-wA_ob*math.cos(math.pi * 60/180)+wA_centr*cos_al+wAB_centr)/ cos_al
+#  wB = (wA * cos_al + OmegaAB**2 * AB) / cos_al
 eAB = (wB * cos_al + wA * sin_al) / AB
 wCx = AC * OmegaAB**2 + wA * cos_al
 wCy = eAB * AC - wA * sin_al
