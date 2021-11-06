@@ -29,10 +29,8 @@ wA_ob = EpsilOA * OA
 wA_centr = OmegaOA**2 * OA
 wA = math.sqrt(wA_ob**2 + wA_centr**2)
 
-wAB_centr = OmegaAB**2 * AB
-
-wB = (-wA_ob*math.cos(math.pi * 60/180)+wA_centr*cos_al+wAB_centr)/ cos_al
-#  wB = (wA * cos_al + OmegaAB**2 * AB) / cos_al
+wBA_centr = OmegaAB ** 2 * AB
+wB = (wA_ob * sin_al - wA_centr * cos_al - wBA_centr) / cos_al
 eAB = (wB * cos_al + wA * sin_al) / AB
 wCx = AC * OmegaAB**2 + wA * cos_al
 wCy = eAB * AC - wA * sin_al
